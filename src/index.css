@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-light: #faf9f7;
+  --color-dark: #1c1917;
+}
+
+body {
+  font-family:
+    "Inter Variable",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif;
+  color: var(--color-dark);
+  background: var(--color-light);
+  -webkit-font-smoothing: antialiased;
+}
+
+.auth-input-field {
+  @apply w-full px-4 py-3 rounded-xl bg-white border border-stone-200 focus:border-stone-400 outline-none transition-colors;
+}
+
+.auth-button {
+  @apply w-full px-4 py-3 rounded-xl bg-stone-800 text-white font-medium hover:bg-stone-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease both;
+}
