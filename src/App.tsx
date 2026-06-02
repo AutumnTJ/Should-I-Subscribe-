@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { useAction } from "convex/react";
 import { api } from "../convex/_generated/api";
 import { Toaster, toast } from "sonner";
+import CancelChatGPTPage from "./CancelChatGPTPage";
 
 type Verdict = "Subscribe" | "Wait" | "Skip";
 
@@ -30,6 +31,14 @@ const verdictConfig: Record<Verdict, { label: string; color: string; dot: string
 };
 
 export default function App() {
+  const path = window.location.pathname;
+  if (path === "/" || path === "/cancel-chatgpt-plus") {
+    return <CancelChatGPTPage />;
+  }
+  return <MainApp />;
+}
+
+function MainApp() {
   const reflect = useAction(api.subscriptions.reflect);
 
   const [service, setService] = useState("");

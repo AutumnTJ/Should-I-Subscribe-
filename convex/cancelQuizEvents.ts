@@ -1,10 +1,8 @@
-import { defineSchema, defineTable } from "convex/server";
-import { authTables } from "@convex-dev/auth/server";
+import { mutation } from "./_generated/server";
 import { v } from "convex/values";
 
-export default defineSchema({
-  ...authTables,
-  cancelQuizEvents: defineTable({
+export const track = mutation({
+  args: {
     type: v.string(),
     timestamp: v.number(),
     page: v.optional(v.string()),
@@ -16,5 +14,8 @@ export default defineSchema({
     compareFlag: v.optional(v.number()),
     answers: v.optional(v.array(v.string())),
     helpful: v.optional(v.boolean()),
-  }),
+  },
+  handler: async (ctx, args) => {
+    await ctx.db.insert("cancelQuizEvents", args);
+  },
 });
