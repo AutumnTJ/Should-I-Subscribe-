@@ -12,7 +12,6 @@ import type * as auth from "../auth.js";
 import type * as cancelQuizEvents from "../cancelQuizEvents.js";
 import type * as http from "../http.js";
 import type * as router from "../router.js";
-import type * as subscriptions from "../subscriptions.js";
 
 import type {
   ApiFromModules,
@@ -25,7 +24,6 @@ declare const fullApi: ApiFromModules<{
   cancelQuizEvents: typeof cancelQuizEvents;
   http: typeof http;
   router: typeof router;
-  subscriptions: typeof subscriptions;
 }>;
 
 /**
